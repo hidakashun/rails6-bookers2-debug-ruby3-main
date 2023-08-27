@@ -2,11 +2,19 @@
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
     <h2>User info</h2>
+    <% if @user.errors.any? %><!--済-->
+  <%= @user.errors.count %>error prohibited this obj from being saved:<!--済-->
+  <ul><!--済-->
+    <% @user.errors.full_messages.each do |message| %><!--済-->
+      <li><%= message %></li><!--済-->
+    <% end %><!--済-->
+  </ul><!--済-->
+<% end %><!--済-->
     <%= form_with model:@user, local:true do |f| %>
       <%= render 'layouts/errors', obj: @user %>
       <div class="form-group">
-        <%= f.label :title %>
-        <%= f.text_field :title, class: "form-control name" %>
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "form-control name" %>
       </div>
      <div class="form-group">
         <%= f.label :image %>
