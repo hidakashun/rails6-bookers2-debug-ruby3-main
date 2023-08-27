@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     @book = Book.new
   end
   def edit
+    @user = User.find(params[:id])#要復習
   end
 
   def update
