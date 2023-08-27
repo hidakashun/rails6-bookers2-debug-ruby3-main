@@ -12,8 +12,11 @@
   <body>
     <%= render 'layouts/header' %>
       <main>
-        <p id="notice"><%= notice %></p>
+        <p id="notice"><%= notice %></p><!--気になる-->
       </main>
+
+      <%= yield %>
+
     <%= render 'layouts/footer' %>
   </body>
 </html>
