@@ -25,14 +25,6 @@ class UsersController < ApplicationController
       render :edit
     end
   end
-  # def update
-  #   if @user.update(user_params)
-  #     redirect_to users_path(@user), notice: "You have updated user successfully."
-
-  #   else
-  #     render "show"
-  #   end
-  # end
 
   private
 
