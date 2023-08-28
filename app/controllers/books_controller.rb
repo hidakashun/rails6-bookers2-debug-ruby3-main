@@ -4,6 +4,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @user = User.find_by(id: @book.user_id)#投稿でユーザー情報の表示をする
     @Book = Book.new#@Bookにbookの空を代入、books/showのrender 'form'に空の値が入るようになっている。
+    @book_comment = BookComment.new
   end
 
   def index
