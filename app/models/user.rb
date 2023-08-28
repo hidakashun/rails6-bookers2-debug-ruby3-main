@@ -3,8 +3,13 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :books, dependent: :destroy#たくさんのbookを持っている1:N の関係性
-  validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
+
+  has_many :books, dependent: :destroy
+
+  validates :name, presence: true
+  validates :name, uniqueness: true
+  validates :name, length: { in: 2..20 }
+
   validates :introduction, length: { maximum: 50 }
   has_one_attached :profile_image
   def get_profile_image(width, height)
