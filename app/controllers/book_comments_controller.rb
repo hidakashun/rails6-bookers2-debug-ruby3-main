@@ -8,9 +8,14 @@ class BookCommentsController < ApplicationController
  end
 
  def destroy
-   comment = BookComment.find(params[:id])
+   comment = BookComment.find(params[:id])#コメントごとのIDを代入
    comment.destroy
  end
+
+ #def destroy
+    #BookComment.find(params[:id]).destroy
+    #redirect_to book_path(params[:book_id])
+ #end
 
  private
 

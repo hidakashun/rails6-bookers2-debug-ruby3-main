@@ -9,7 +9,7 @@
    <% end %>
  <!--いいねを削除したら？(↓の説明)-->
  <% else %>
-    　<%= link_to book_favorites_path(book), method: :post do %>
+   <%= link_to book_favorites_path(book), method: :post do %>
  <!--いいねを削除したら次はいいねがcreateされてほしいのでmethodはpost-->
       ♥<%= book.favorites.count %>
       <% end %>
