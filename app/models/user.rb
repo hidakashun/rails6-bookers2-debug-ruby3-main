@@ -21,15 +21,17 @@ class User < ApplicationRecord
 
   # フォローしたときの処理
   def follow(user_id)
-    relationships.create(followed_id: user_id)
+    followers.create(followed_id: user_id)
   end
-  # フォローを外すときの処理
+
+  # ユーザーのフォローを外す
   def unfollow(user_id)
-    relationships.find_by(followed_id: user_id).destroy
+    followers.find_by(followed_id: user_id).destroy
   end
-  # フォローしているか判定
+
+  # フォローしていればtrueを返す
   def following?(user)
-    followings.include?(user)#following?を入れたらタイムアウトする
+    following_user.include?(user)
   end
 
   validates :name, presence: true
