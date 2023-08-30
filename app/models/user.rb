@@ -5,9 +5,20 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :books, dependent: :destroy
+
+  # ユーザーにたくさんのいいねを持つことができるようにする。いいねはユーザーに依存してるから、ユーザーが消えたらいいねも消えるようにする
   has_many :favorites, dependent: :destroy
+
+  #複数のBookComentと関連付ける。userが消されたとき関連するBookComentも同時に消される
   has_many :book_comments, dependent: :destroy
-  
+
+  # フォローをした、されたの関係
+  has_many :followers, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :followeds, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+
+  # 一覧画面で使う
+  has_many :following_users, through: :followers, source: :followed
+  has_many :follower_users, through: :followeds, source: :follower
 
   validates :name, presence: true
   validates :name, uniqueness: true
