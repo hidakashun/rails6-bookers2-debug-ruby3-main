@@ -29,7 +29,7 @@ class User < ApplicationRecord
   end
   # フォローしているか判定
   def following?(user)
-    followings.include?(user)
+    followings.include?(user)#following?を入れたらタイムアウトする
   end
 
   validates :name, presence: true

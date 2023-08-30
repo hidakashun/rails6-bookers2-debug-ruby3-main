@@ -28,20 +28,18 @@ class UsersController < ApplicationController
     end
   end
 
-  # フォロー一覧
   def follows
     user = User.find(params[:id])
-    @users = user.following_users
+    @users = user.following_user.page(params[:page]).per(3).reverse_order
   end
 
-  # フォロワー一覧
   def followers
     user = User.find(params[:id])
-    @user = user.follower_users
+    @users = user.follower_user.page(params[:page]).per(3).reverse_order
   end
 
 
-  private
+    private
 
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image)
