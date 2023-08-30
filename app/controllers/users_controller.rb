@@ -30,12 +30,12 @@ class UsersController < ApplicationController
 
   def follows
     user = User.find(params[:id])
-    @users = user.following_user.page(params[:page]).per(3).reverse_order
+    @users = user.following_users
   end
 
   def followers
     user = User.find(params[:id])
-    @users = user.follower_user.page(params[:page]).per(3).reverse_order
+    @user = user.follower_users
   end
 
 
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :introduction, :profile_image)
   end
 
-  def ensure_correct_user#なんか違う
+  def ensure_correct_user
     @user = User.find(params[:id])
     unless @user == current_user
       redirect_to user_path(current_user)
