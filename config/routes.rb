@@ -11,7 +11,8 @@ Rails.application.routes.draw do
  end
 
   resources :users, only: [:index, :show, :edit, :update] do
-    member do
+    member do#resourcesで生成されるルートに、決められたルート以外のルートを追加するための処理!
+             #resourcesのブロック（doとend）の中で使います。
       get :follows, :followers
     end
       resource :relationships, only: [:create, :destroy]
