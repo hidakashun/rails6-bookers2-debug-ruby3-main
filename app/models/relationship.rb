@@ -2,6 +2,8 @@ class Relationship < ApplicationRecord
   belongs_to :follower, class_name: "User"
   belongs_to :followed, class_name: "User"
 
+
+
   #belongs_to :userとすると、どっちがどっちのuserかわからなくなるので、followerとfollowedで分けている。
 
   #class_nameがないと、followerテーブルとfollowedテーブルを探しに行ってしまうので、class_name: "User"でuserテーブルからデータをとってきてもらうようにしている。

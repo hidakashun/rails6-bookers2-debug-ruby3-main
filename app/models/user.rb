@@ -31,12 +31,10 @@ class User < ApplicationRecord
 
   # フォローしていればtrueを返す
   def following?(user)
-    following_user.include?(user)
+    following_users.include?(user)
   end
 
-  validates :name, presence: true
-  validates :name, uniqueness: true
-  validates :name, length: { in: 2..20 }
+  validates :name, presence: true, uniqueness: true, length: { in: 2..20 }
 
   validates :introduction, length: { maximum: 50 }
 
