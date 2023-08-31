@@ -31,7 +31,7 @@ class User < ApplicationRecord
 
   # フォローしていればtrueを返す
   def following?(user)
-    following_users.include?(user)
+    following_users.include?(user)#20行目の定義した名前に合わせないといけない。
   end
 
   validates :name, presence: true, uniqueness: true, length: { in: 2..20 }
