@@ -11,12 +11,20 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
+    <p id="notice"><%= notice %></p><!--気になる-->
+
+    <div class="container">
+      <div class='row'>
+        <div class='col-md-5 offset-md-4'>
+          <%= render 'layouts/seach' %>
+        </div>
+      </div>
+    </div>
+
+
       <main>
-        <p id="notice"><%= notice %></p><!--気になる-->
       </main>
-
       <%= yield %>
-
     <%= render 'layouts/footer' %>
   </body>
 </html>
