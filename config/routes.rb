@@ -15,7 +15,9 @@ Rails.application.routes.draw do
              #resourcesのブロック（doとend）の中で使います。
       get :follows, :followers
     end
-      resource :relationships, only: [:create, :destroy]
+    resource :relationships, only: [:create, :destroy]
+    get 'followings' => 'relationships#followings', as: 'followings'
+    get 'followers' => 'relationships#followers', as: 'followers'
   end
 
 end
