@@ -19,9 +19,9 @@
         <!--いいね機能ajax-partial-->
         <td id="favorite_buttons_<%= book.id %>" >
         <%= render "favorites/favorite", book: book %>
+        <td>
+            <%= link_to "#{book.book_comments.count} コメント", book_path(book.id) %>
         </td>
-       <td><p>コメント件数:<%= book.post_comments.count %></p></td>
-       <td><%= render "books/static_rate", book: book %></td>
       </tr>
     <% end %>
   </tbody>
