@@ -11,6 +11,9 @@ class User < ApplicationRecord
 
   #複数のBookComentと関連付ける。userが消されたとき関連するBookComentも同時に消される
   has_many :book_comments, dependent: :destroy
+  #DM関係
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
 
   # フォローをした、されたの関係
   has_many :followers, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
