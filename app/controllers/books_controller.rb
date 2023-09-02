@@ -8,9 +8,14 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all
-    @user = current_user
+    to = Time.current.at_end_of_day
+    from = (to - 6.day).at_beginning_of_day
+    @books = Book.includes(:favorited_users).
+      sort_by {|x|
+        x.favorited_users.includes(:favorites).where(created_at: from...to).size
+      }.reverse
     @book = Book.new
+    @user = current_user#いらなくないか
   end
 
   def create
@@ -21,7 +26,7 @@ class BooksController < ApplicationController
     redirect_to book_path(@book.id)
     else
 render
-    @user = current_user
+    @user = current_user#いらなくないか
     render :index
     end
   end

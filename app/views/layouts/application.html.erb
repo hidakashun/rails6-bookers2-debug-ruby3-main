@@ -12,13 +12,15 @@
   <body>
     
     <%= render 'layouts/header' %>
-    <p id="notice"><%= notice %></p><!--気になる-->
+    <p id="notice"><%= notice %></p>
 
     <div class="container">
       <div class='row'>
         <div class='col-md-5 offset-md-4'>
           <% if user_signed_in? %>
-          <%= render 'layouts/seach' %>
+          
+          <%= render 'layouts/seach' %><!--気になる-->
+          
           <% end %>
         </div>
       </div>
