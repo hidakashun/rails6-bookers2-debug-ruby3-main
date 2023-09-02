@@ -23,10 +23,13 @@
           <td id="favorite_buttons_<%= @book.id %>" >
             <%= render "favorites/favorite", book: @book %>
           </td>
-      　　　<td>
+          <td>
             <div>コメント件数：<span id="comment_count"><%= @book.book_comments.count %></span></div>
-  　       </td>
- 　      </tr>
+          </td>
+          <td>
+            <p class="view-count">閲覧数: <%= @book_detail.view_counts.count %></p>
+          </td>
+        </tr>
       </table>
 
         <div id="book-comments">

@@ -6,6 +6,8 @@ class Book < ApplicationRecord
   validates :body, length: { maximum: 200 }
 
   has_many :book_comments, dependent: :destroy
+  #閲覧数関係
+  has_many :view_counts, dependent: :destroy
 
   has_many :favorites, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :user#いいね機能のソート用の記述

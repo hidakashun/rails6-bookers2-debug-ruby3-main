@@ -1,7 +1,17 @@
 class BooksController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
   def show
+
+    @book_detail = Book.find(params[:id])
+    unless ViewCount.find_by(user_id: current_user.id, book_id: @book_detail.id)
+      current_user.view_counts.create(book_id: @book_detail.id)
+    end
+
     @book = Book.find(params[:id])
+    unless ViewCount.where(created_at: Time.zone.now.all_day).find_by(user_id: current_user.id, book_id: @book.id)
+      current_user.read_counts.create(book_id: @book.id)
+    end
+
     @user = User.find_by(id: @book.user_id)#投稿でユーザー情報の表示をする
     @Book = Book.new#@Bookにbookの空を代入、books/showのrender 'form'に空の値が入るようになっている。
     @book_comment = BookComment.new
