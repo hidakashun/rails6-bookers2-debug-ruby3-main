@@ -6,7 +6,7 @@
       <%= render 'users/info', user: @user, isRoom: @isRoom, roomId: @roomId, room: @room, entry: @entry %><!--選択したユーザーにしないといけない-->
 
       <h2 class="mt-3">New book</h2>
-      <%= render 'form', book: @Book %>
+      <%= render 'form', book: Book.new %>
     </div>
     <div class='col-md-8 offset-md-1'>
   		<h2>Book detail</h2>
@@ -31,7 +31,7 @@
             <p class="view-count">閲覧数: <%= @book_detail.view_counts.count %></p>
           </td>
           <td>
-            <p>★</p><!--星の数-->
+            <%= render "static.rate", book: @book %>
           </td>
           <% if @book.user == current_user %>
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>

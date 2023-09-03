@@ -12,6 +12,8 @@ import "jquery"
 import "popper.js"
 import "bootstrap"
 import "../stylesheets/application"
+
+window.$ = window.jQuery = require('jquery');
 //★５レビュー機能
 import Raty from "raty.js"
 window.raty = function(elem,opt) {
@@ -19,7 +21,6 @@ window.raty = function(elem,opt) {
   raty.init();
   return raty;
 }
-window.$ = window.jQuery = require('jquery');
 
 Rails.start()
 Turbolinks.start()
