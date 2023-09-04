@@ -25,14 +25,17 @@
         </td>
         <!--いいね機能ajax-partial-->
         <td id="favorite_buttons_<%= book.id %>" >
-        <%= render "favorites/favorite", book: book %>
-        <td>コメント数： <%= book.book_comments.count %></td>
+          <%= render "favorites/favorite", book: book %>
+        <td>
+          コメント数： <%= book.book_comments.count %>
+        </td>
+        <td>
+          閲覧数: <%= book.view_counts.count %>
+        </td>
         <td>
           <%= render "books/static.rate", book: book %>
         </td>
-        <td>
-         <td>閲覧数: <%= book.view_counts.count %></td>
-        </td>
+
       </tr>
     <% end %>
   </tbody>
