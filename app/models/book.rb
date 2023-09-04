@@ -19,6 +19,10 @@ class Book < ApplicationRecord
   scope :old, -> {order(created_at: :asc)}#古いものから順に並べる
   scope :star_count, -> {order(star: :desc)}#星の数が多い順に並べる
   #order = データの取り出し,created_at = 投稿日のカラム,desc = 昇順,asc = 降順
+
+  #カテゴリタグを追加し検索
+  validates :category, presence: true
+
   # 検索方法分岐
   def self.looks(search, word)
     if search == "perfect_match"

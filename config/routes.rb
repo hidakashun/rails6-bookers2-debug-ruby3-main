@@ -25,4 +25,6 @@ Rails.application.routes.draw do
  resources :rooms, only: [:create,:show]
 
  get "search" => "searches#search"
+ #カテゴリー検索用のルート
+ get 'tagsearches/search', to: 'tagsearches#search'
 end

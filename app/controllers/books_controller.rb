@@ -77,7 +77,8 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body, :image, :star)#ここのstar
+    #ストロングパラメータを設定しておくと指定したカラムの情報だけを受け取ることができます。
+    params.require(:book).permit(:title, :body, :image, :star, :category)
   end
 
  def is_matching_login_user
