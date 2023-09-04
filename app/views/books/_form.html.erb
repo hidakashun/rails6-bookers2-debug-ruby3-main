@@ -20,7 +20,6 @@
 
   <% if book.id.nil? %>
     <div class="form-group" id="star">
-      <%= f.label :star %>
       <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
       <div id="post_raty"></div>
     </div>

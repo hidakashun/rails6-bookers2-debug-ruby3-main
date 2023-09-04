@@ -37,10 +37,10 @@
       <% unless user.id == current_user.id %>
         <% if (current_user.following? user) && (user.following? current_user)  %>
         <% if isRoom == true %>
-          <p class="user-show-room"><a href="/rooms/<%= roomId %>" class="btn btn-primary btn-lg">チャットへ</a><!--HTMLの記述になってしまっている-->
-          <!--%= link_to "チャットへ", rooms_path(roomId), method: :post, class:"btn btn-primary btn-lg" %-->
+          <p class="user-show-room"><a href="/rooms/<%= roomId %>" class="btn btn-primary">チャットへ</a><!--HTMLの記述になってしまっている-->
+          <!--%= link_to "チャットへ", rooms_path(roomId), method: :post, class:"btn btn-primary" %-->
         <% else %>
-          <%= form_for room do |f| %>
+          <%= form_for @room do |f| %>
             <%= fields_for entry do |e| %>
               <%= e.hidden_field :user_id, value: user.id %>
             <% end %>
