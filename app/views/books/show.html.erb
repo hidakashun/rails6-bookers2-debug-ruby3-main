@@ -24,8 +24,8 @@
           </td>
           <% if @book.category.present? %><!--カテゴリーが選択されていた場合表示させる-->
           <td>
-　　　　    <%= link_to @book.category,tagsearches_search_path(content:@book.category) %><!--ズレてる-->
-　　      </td>
+          <%= link_to @book.category,tagsearches_search_path(content:@book.category) %>
+          </td>
           <% end %>
           <td id="favorite_buttons_<%= @book.id %>" >
             <%= render "favorites/favorite", book: @book %>
