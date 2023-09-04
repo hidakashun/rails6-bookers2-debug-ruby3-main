@@ -27,6 +27,17 @@ class BooksController < ApplicationController
       }.reverse
     @book = Book.new
     @user = current_user#いらなくないか
+
+     #ソート機能
+    if params[:latest]
+    @books = Book.latest
+    elsif params[:old]
+    @books = Book.old
+    elsif params[:star_count]
+    @books = Book.star_count
+    else
+    @books = Book.all
+    end
   end
 
   def create
@@ -36,7 +47,7 @@ class BooksController < ApplicationController
     flash[:notice] = "You have created book successfully."
     redirect_to book_path(@book.id)
     else
-    @books = Book.all
+    @books = Book.all#ぬけていた
     render :index
     end
   end

@@ -14,7 +14,11 @@ class Book < ApplicationRecord
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end
-
+  #ソート機能
+  scope :latest, -> {order(created_at: :desc)}#最新のものから順に並べる
+  scope :old, -> {order(created_at: :asc)}#古いものから順に並べる
+  scope :star_count, -> {order(star: :desc)}#星の数が多い順に並べる
+  #order = データの取り出し,created_at = 投稿日のカラム,desc = 昇順,asc = 降順
   # 検索方法分岐
   def self.looks(search, word)
     if search == "perfect_match"
