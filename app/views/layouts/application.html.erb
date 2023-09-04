@@ -10,7 +10,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    
+
     <%= render 'layouts/header' %>
     <p id="notice"><%= notice %></p>
 
@@ -18,15 +18,12 @@
       <div class='row'>
         <div class='col-md-5 offset-md-4'>
           <% if user_signed_in? %>
-          
           <%= render 'layouts/seach' %><!--気になる-->
-          
+          <%= render 'tagsearches/tagsearch' %><!--気になる-->
           <% end %>
         </div>
       </div>
     </div>
-
-
       <main>
       </main>
       <%= yield %>
