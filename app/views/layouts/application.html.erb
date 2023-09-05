@@ -12,16 +12,20 @@
   <body>
     <%= render 'layouts/header' %>
     <p id="notice"><%= notice %></p>
-    <% if user_signed_in? %>
-    <div class="container">
-      <div class='row'>
-        <div class='col-md-5 offset-md-2'>
-          <%= render 'layouts/seach' %>
+
+    <% if user_signed_in? %><!--ログインしているときのみ表示させる-->
+      <% unless current_page?(root_path) %><!--root_pasuを表示しているときは、unless～endの間を表示しない-->
+      <div class="container">
+        <div class='row'>
+          <div class='col-md-5 offset-md-2'>
+            <%= render 'layouts/seach' %>
+          </div>
+            <%= render 'tagsearches/tagsearch' %>
         </div>
-          <%= render 'tagsearches/tagsearch' %>
       </div>
-    </div>
+      <% end %>
     <% end %>
+
       <main>
       </main>
       <%= yield %>

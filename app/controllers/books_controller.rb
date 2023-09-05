@@ -19,6 +19,7 @@ class BooksController < ApplicationController
   end
 
   def index
+    #いいね順機能（ソートとの併用不可）
     to = Time.current.at_end_of_day
     from = (to - 6.day).at_beginning_of_day
     @books = Book.includes(:favorited_users).
@@ -28,13 +29,15 @@ class BooksController < ApplicationController
     @book = Book.new
     @user = current_user#いらなくないか
 
-     #ソート機能
+     #ソート機能（いいねとの併用不可）
     if params[:latest]
     @books = Book.latest
     elsif params[:old]
     @books = Book.old
     elsif params[:star_count]
     @books = Book.star_count
+    elsif params[:most_favorited]
+    @books = Book.most_favorited
     else
     @books = Book.all
     end
