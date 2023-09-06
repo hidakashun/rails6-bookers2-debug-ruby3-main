@@ -34,7 +34,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
@@ -74,4 +74,15 @@ Rails.application.configure do
   config.hosts << "a8e5aa1199b346b6b347f5fcfe5afcc5.vfs.cloud9.ap-southeast-2.amazonaws.com"
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  address:              'smtp.gmail.com',
+  port:                  587,
+  domain:               'gmail.com',
+  user_name:            'Googleのメアド',
+  password:             '取得したパスワード',
+  authentication:       'login',
+  enable_starttls_auto:  true
+  }
 end
