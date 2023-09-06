@@ -9,6 +9,7 @@ class GroupsController < ApplicationController
     end
 
     def show
+      @room = Room.new
       @book = Book.new
       @group = Group.find(params[:id])
       @user = User.find(params[:id])
