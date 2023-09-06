@@ -27,4 +27,6 @@ Rails.application.routes.draw do
  get "search" => "searches#search"
  #カテゴリー検索用のルート
  get 'tagsearches/search', to: 'tagsearches#search'
+ #グループ作成
+ resources :groups, only: [:new, :index, :show, :create, :edit, :update]
 end

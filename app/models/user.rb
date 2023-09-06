@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :books, dependent: :destroy
+  #グループ作成
+  has_many :group_users, dependent: :destroy
+
 
   # ユーザーにたくさんのいいねを持つことができるようにする。いいねはユーザーに依存してるから、ユーザーが消えたらいいねも消えるようにする
   has_many :favorites, dependent: :destroy
