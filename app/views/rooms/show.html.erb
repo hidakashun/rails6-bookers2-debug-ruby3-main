@@ -23,19 +23,37 @@
    <% if @messages.present? %>
      <% @messages.each do |m| %>
        <% @myUserId == m.user.id  %>
-
-
+  <div class="container text-center">
+    <div class='row'>
+      <div class='dmname col-1 rounded '>
        <p><%= m.user.name %></p>
-
+      </div>
+    </div>
+  </div>
+ <h6></h6>
+  <div class="container text-center">
+    <div class='row'>
+      <div class='dmmessage col-5 rounded '>
        <p><%= m.message %></p>
+      </div>
+    </div>
+  </div>
+  <p></p>
      <% end %>
    <% end %>
 
 <%= form_for @message do |f| %>
+  <div class="container text-right">
+    <div class='row'>
+      <div class='col-12 '>
    <%= f.text_field :message, placeholder: "メッセージを入力して下さい" , size: 50, class:"form-text-field" %>
       <%= f.hidden_field :room_id, value: @room.id %>
-        <%= f.submit "投稿",class: 'form-submit'%>
+        <%= f.submit "投稿",class: 'form-submit btn-success btn-sm'%>
+      </div>
+    </div>
+  </div>
  <% end %>
+
 
 
 
